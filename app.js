@@ -1,6 +1,15 @@
 const express = require('express');
+const mongoose = require('mongoose');
 
 const app = express();
+
+mongoose.connect('mongodb+srv://jimbob:CdLab@2023@cluster0-pme76.mongodb.net/test?retryWrites=true&w=majority',
+  { useNewUrlParser: true,
+    useUnifiedTopology: true })
+  .then(() => console.log('Connexion à MongoDB réussie !'))
+  .catch(() => console.log('Connexion à MongoDB échouée !'));
+
+app.use(express.json()); 
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
@@ -8,8 +17,16 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
   });
+  mongodb+srv://papaousmane21:<password>@atlascluster.mmue7rc.mongodb.net/?retryWrites=true&w=majority
 
-  app.use('/api/stuff', (req, res, next) => {
+app.post('/api/stuff', (req, res, next) => {
+    console.log(req.body);
+    res.status(201).json({
+      message: 'Objet créé !'
+    });
+  });
+
+app.get('/api/stuff', (req, res, next) => {
     const stuff = [
       {
         _id: 'oeihfzeoi',
