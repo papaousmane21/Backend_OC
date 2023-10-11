@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://jimbob:CdLab@2023@cluster0-pme76.mongodb.net/test?retryWrites=true&w=majority',
+mongoose.connect('mongodb+srv://papaousmane21:CdLab2023@atlascluster.mmue7rc.mongodb.net/?retryWrites=true&w=majority',
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -17,7 +17,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
   });
-  mongodb+srv://papaousmane21:<password>@atlascluster.mmue7rc.mongodb.net/?retryWrites=true&w=majority
+  
 
 app.post('/api/stuff', (req, res, next) => {
     console.log(req.body);
